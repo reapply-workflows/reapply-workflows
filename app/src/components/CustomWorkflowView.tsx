@@ -20,6 +20,7 @@ import {
 } from '@material-ui/lab';
 import { observer } from 'mobx-react';
 import { useMemo } from 'react';
+import { useHistory } from 'react-router';
 
 import { useStore } from '../stores/RootStore';
 
@@ -54,8 +55,9 @@ const CustomWorkflowView = () => {
   const {
     exploreStore: { workflow },
   } = useStore();
+  const history = useHistory();
 
-  const { customWorkflows = {} } = workflow || {};
+  const { customWorkflows = {}, setCurrentWorkflow } = workflow || {};
 
   const workflows = useMemo(() => {
     return Object.values(customWorkflows);
@@ -72,8 +74,20 @@ const CustomWorkflowView = () => {
             <CardHeader
               action={
                 <ButtonGroup>
-                  <Button>Load</Button>
-                  <Button>Edit</Button>
+                  <Button
+                    onClick={() => {
+                      history.push({ pathname: '/explore', search: `?workflow=${wf.id}` });
+                    }}
+                  >
+                    Load
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      if (setCurrentWorkflow) setCurrentWorkflow(wf.id);
+                    }}
+                  >
+                    Edit
+                  </Button>
                 </ButtonGroup>
               }
               title={wf.name}

@@ -93,6 +93,7 @@ export default class WorkflowStore<T> {
 
       this.currentWorkflow = newWorkflow;
     } else {
+      console.log('Test');
       this.currentWorkflow = this.customWorkflows[id];
     }
   };
