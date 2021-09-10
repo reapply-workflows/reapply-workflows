@@ -19,7 +19,10 @@ export const PREDICT = `${API}/predict`;
 export const COMPUTE = `${API}/compute`;
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost/graphql/',
+  uri:
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost/graphql/'
+      : 'https://reusing.sci.utah.edu/graphql/',
 });
 
 export const apolloClient = new ApolloClient({
