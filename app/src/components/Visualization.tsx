@@ -23,6 +23,7 @@ import { CUSTOM_CATEGORY_ASSIGNMENT } from '../stores/ExploreStore';
 import { useStore } from '../stores/RootStore';
 import translate from '../utils/transform';
 
+import AddPCPDialog from './AddPCPDialog';
 import AddScatterplotDialog from './AddScatterplotDialog';
 import PCP from './PCP/PCP';
 import { createComet } from './Scatterplot/CompareMarks';
@@ -130,6 +131,7 @@ const Visualization = () => {
     useContext(GlobalPlotAttributeContext) || {};
 
   const [showDialog, setShowDialog] = useState(false);
+  const [showPCPDialog, setShowPCPDialog] = useState(false);
   const spStyles = useScatterplotStyle();
 
   const styles = useStyles({ dimension: spContainerDimension, showCategory });
@@ -356,9 +358,16 @@ const Visualization = () => {
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipPlacement="right"
-          tooltipTitle="Add"
+          tooltipTitle="Add Scatteplot"
           tooltipOpen
           onClick={() => setShowDialog(true)}
+        />
+        <SpeedDialAction
+          icon={<AddIcon />}
+          tooltipPlacement="right"
+          tooltipTitle="Add PCP"
+          tooltipOpen
+          onClick={() => setShowPCPDialog(true)}
         />
         <SpeedDialAction
           icon={<AspectRatioIcon />}
@@ -369,6 +378,7 @@ const Visualization = () => {
         />
       </SpeedDial>
       <AddScatterplotDialog show={showDialog} onClose={() => setShowDialog(false)} />
+      <AddPCPDialog show={showPCPDialog} onClose={() => setShowPCPDialog(false)} />
     </>
   );
 };

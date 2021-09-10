@@ -1,0 +1,17 @@
+label_column: Label
+columns:
+  Math:
+    fullname: Math
+    short: A
+    unit: null
+    data_type: numeric
+  Physics:
+    fullname: Physics
+    short: B
+    unit: null
+    data_type: numeric
+  CS:
+    fullname: CS
+    short: B
+    unit: null
+    data_type: numeric
