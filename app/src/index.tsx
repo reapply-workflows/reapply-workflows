@@ -4,12 +4,11 @@ import whyDidYouRender from '@welldone-software/why-did-you-render';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { QueryClientProvider } from 'react-query';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
 
 import BaseLayout from './layouts/BaseLayout';
 import { store, StoreContext } from './stores/RootStore';
 import Explore from './views/Explore';
-import Landing from './views/Landing';
 import Projects from './views/Projects';
 
 export const API =
@@ -48,7 +47,7 @@ const App = () => {
             <BaseLayout>
               <HashRouter>
                 <Switch>
-                  <Route component={Landing} path="/" exact />
+                  <Redirect from="/" to="/project" exact />
                   <Route component={Projects} path="/project" exact />
                   <Route component={Explore} path="/explore" exact />
                 </Switch>
