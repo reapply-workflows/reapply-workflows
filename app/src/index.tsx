@@ -13,7 +13,7 @@ import Landing from './views/Landing';
 import Projects from './views/Projects';
 
 export const API =
-  process.env.NODE_ENV === 'development' ? 'http://localhost' : 'https://3.131.141.97';
+  process.env.NODE_ENV === 'development' ? 'http://localhost' : 'https://reusing.sci.utah.edu';
 export const PROJECT = `${API}/project`;
 export const DATA = `${API}/data`;
 export const PREDICT = `${API}/predict`;
